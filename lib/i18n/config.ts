@@ -3,7 +3,7 @@
  *
  * English is the default and lives at the root URLs (/about/). Hindi and
  * Marathi live under a prefix (/hi/about/, /mr/about/). The visitor's choice is
- * remembered in the LOCALE_COOKIE cookie (see proxy.ts and LanguageSwitcher).
+ * remembered in the LOCALE_COOKIE cookie (see proxy.ts).
  */
 export const locales = ["en", "hi", "mr"] as const;
 export type Locale = (typeof locales)[number];

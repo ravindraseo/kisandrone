@@ -7,7 +7,6 @@ import { useT } from "@/lib/i18n/client";
 import type { NavGroup, NavLink } from "@/lib/nav";
 import { siteConfig } from "@/lib/site";
 import { Icon } from "./Icon";
-import { LanguageSwitcher } from "./LanguageSwitcher";
 import { LocaleLink as Link } from "./LocaleLink";
 import { Logo } from "./Logo";
 
@@ -132,16 +131,13 @@ export function Header({ navGroups, secondaryNav }: { navGroups: NavGroup[]; sec
         </nav>
 
         <div className="flex items-center gap-2">
-          <div className="hidden min-[360px]:block">
-            <LanguageSwitcher />
-          </div>
           <a
             href={siteConfig.contact.phoneHref}
             aria-label={t.common.callAria(siteConfig.contact.phoneDisplay)}
-            className="hidden items-center gap-2 whitespace-nowrap rounded-full bg-saffron-500 px-4 py-2.5 text-sm font-bold text-forest-950 shadow-sm hover:bg-saffron-600 hover:text-white sm:inline-flex xl:px-3 2xl:px-4"
+            className="hidden items-center gap-2 whitespace-nowrap rounded-full bg-saffron-500 px-4 py-2.5 text-sm font-bold text-forest-950 shadow-sm hover:bg-saffron-600 hover:text-white sm:inline-flex"
           >
             <Icon name="phone" className="h-4 w-4" />
-            <span className="xl:hidden 2xl:inline">{siteConfig.contact.phoneDisplay}</span>
+            <span>{siteConfig.contact.phoneDisplay}</span>
           </a>
           <button
             ref={toggleRef}
@@ -164,10 +160,6 @@ export function Header({ navGroups, secondaryNav }: { navGroups: NavGroup[]; sec
         hidden={!mobileOpen}
         className="max-h-[calc(100dvh-4.25rem)] overflow-y-auto border-t border-forest-900/10 bg-cream-50 xl:hidden"
       >
-        <div className="container-site pt-4">
-          <p className="mb-2 text-sm font-semibold text-forest-800">{t.header.language}</p>
-          <LanguageSwitcher variant="menu" />
-        </div>
         <ul className="container-site space-y-1 py-4">
           {navGroups.map((g) => {
             const expanded = mobileSection === g.id;

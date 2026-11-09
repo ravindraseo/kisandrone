@@ -8,9 +8,8 @@ import { LOCALE_COOKIE } from "@/lib/i18n/config";
  *   rewritten to /en/about/ so every page lives under app/[lang]/.
  * - /hi/… and /mr/… are served as they are.
  * - /en/… redirects to the root URL so English has a single canonical address.
- * - A visitor who chose Hindi or Marathi (kd_lang cookie, set by the language
- *   switcher) and lands on an English URL is sent to the same page in their
- *   language. Search engines send no cookie, so they always see every language.
+ * - There is no visible language selector, so English URLs always show English.
+ *   A kd_lang cookie left over from the earlier selector is deleted.
  */
 export function proxy(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
@@ -18,21 +17,14 @@ export function proxy(request: NextRequest) {
   if (pathname === "/en" || pathname.startsWith("/en/")) {
     const url = request.nextUrl.clone();
     url.pathname = pathname.slice(3) || "/";
-    const res = NextResponse.redirect(url, 308);
-    res.cookies.set(LOCALE_COOKIE, "en", { path: "/", maxAge: 60 * 60 * 24 * 365, sameSite: "lax" });
-    return res;
+    return NextResponse.redirect(url, 308);
   }
 
   if (/^\/(hi|mr)(\/|$)/.test(pathname)) return NextResponse.next();
 
-  const saved = request.cookies.get(LOCALE_COOKIE)?.value;
-  if (saved === "hi" || saved === "mr") {
-    const url = request.nextUrl.clone();
-    url.pathname = `/${saved}${pathname}`;
-    return NextResponse.redirect(url, 307);
-  }
-
-  return NextResponse.rewrite(new URL(`/en${pathname}${search}`, request.url));
+  const res = NextResponse.rewrite(new URL(`/en${pathname}${search}`, request.url));
+  if (request.cookies.has(LOCALE_COOKIE)) res.cookies.delete(LOCALE_COOKIE);
+  return res;
 }
 
 export const config = {

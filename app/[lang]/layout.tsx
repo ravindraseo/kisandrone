@@ -37,6 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     applicationName: siteConfig.name,
     openGraph: { type: "website", siteName: siteConfig.name, locale: ogLocale[isLocale(lang) ? lang : "en"] },
     twitter: { card: "summary_large_image" },
+    verification: { google: "j3hwZGPGxVkVWJ1zJ70Sp0-suqZvR3CM20R-KFC5guY" },
     robots: { index: true, follow: true },
     formatDetection: { telephone: true },
   };
