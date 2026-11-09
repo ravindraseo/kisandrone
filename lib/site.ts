@@ -18,11 +18,11 @@ export const siteConfig = {
    * Public URL of the deployed site, used for canonical URLs, the sitemap and
    * Open Graph. Set NEXT_PUBLIC_SITE_URL in your hosting environment.
    */
-  // Official site: https://www.kisandrone.co.in (production builds use it by default).
-  // Must match the host the live site serves (kisandrone.co.in redirects to www), or canonicals break.
+  // Official site: https://kisandrone.co.in (production builds use it by default).
+  // Must match the primary domain in Vercel (www.kisandrone.co.in redirects here), or canonicals break.
   url: (
     process.env.NEXT_PUBLIC_SITE_URL ||
-    (process.env.NODE_ENV === "production" ? "https://www.kisandrone.co.in" : "http://localhost:3000")
+    (process.env.NODE_ENV === "production" ? "https://kisandrone.co.in" : "http://localhost:3000")
   ).replace(/\/$/, ""),
   locale: "en_IN",
   contact: {

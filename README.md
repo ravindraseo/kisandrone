@@ -4,7 +4,7 @@ An English, SEO-focused, responsive website about agriculture drones, drone spra
 guides, government schemes and drone pilot training. Built with Next.js 16 (App Router), TypeScript and
 Tailwind CSS v4.
 
-- Website: **https://www.kisandrone.co.in**
+- Website: **https://kisandrone.co.in**
 - Phone / WhatsApp: **+91 82828 02150** · Email: **enquiry@kisandrone.co.in**
 - Head office: H-187, Lohia Rd, H Block, Sector 63, Noida, Uttar Pradesh 201309
 - Hours: Monday to Saturday, 9:30 AM – 7:00 PM
@@ -41,7 +41,7 @@ Copy `.env.example` to `.env.local`, or set these in your hosting provider's set
 
 | Variable | Required? | Purpose |
 | --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | No (production builds default to `https://www.kisandrone.co.in`) | Live domain, e.g. `https://www.kisandrone.co.in` (no trailing `/`). Used for canonical URLs, the sitemap, robots and Open Graph. |
+| `NEXT_PUBLIC_SITE_URL` | No (production builds default to `https://kisandrone.co.in`) | Live domain, e.g. `https://kisandrone.co.in` (no trailing `/`). Used for canonical URLs, the sitemap, robots and Open Graph. |
 | `NEXT_PUBLIC_ALLOW_INDEXING` | No | Set to `false` on staging/preview so Google does not index it. Default `true`. |
 | `NEXT_OUTPUT` | No | `standalone` builds a small server bundle for Docker (already set in the Dockerfile). |
 
@@ -63,7 +63,7 @@ Build command `npm run build`, Next.js default output — nothing to change.
 ### Option B — Docker (Google Cloud Run, AWS App Runner/ECS, Azure Container Apps, Render, Railway, VPS)
 
 ```bash
-docker build -t kisan-drone --build-arg NEXT_PUBLIC_SITE_URL=https://www.kisandrone.co.in .
+docker build -t kisan-drone --build-arg NEXT_PUBLIC_SITE_URL=https://kisandrone.co.in .
 docker run -p 3000:3000 kisan-drone
 ```
 
@@ -73,7 +73,7 @@ docker run -p 3000:3000 kisan-drone
 Google Cloud Run example (the site URL is baked in at build time, so build and push the image first):
 
 ```bash
-docker build -t asia-south1-docker.pkg.dev/<PROJECT>/<REPO>/kisan-drone --build-arg NEXT_PUBLIC_SITE_URL=https://www.kisandrone.co.in .
+docker build -t asia-south1-docker.pkg.dev/<PROJECT>/<REPO>/kisan-drone --build-arg NEXT_PUBLIC_SITE_URL=https://kisandrone.co.in .
 docker push asia-south1-docker.pkg.dev/<PROJECT>/<REPO>/kisan-drone
 gcloud run deploy kisan-drone --image asia-south1-docker.pkg.dev/<PROJECT>/<REPO>/kisan-drone --region asia-south1 --allow-unauthenticated
 ```
@@ -82,7 +82,7 @@ gcloud run deploy kisan-drone --image asia-south1-docker.pkg.dev/<PROJECT>/<REPO
 
 ```bash
 npm ci
-NEXT_PUBLIC_SITE_URL=https://www.kisandrone.co.in npm run build
+NEXT_PUBLIC_SITE_URL=https://kisandrone.co.in npm run build
 PORT=3000 npm run start
 ```
 
