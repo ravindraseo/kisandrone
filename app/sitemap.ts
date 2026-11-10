@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { articles } from "@/content/blog";
 import { categories } from "@/content/categories";
+import { editorial } from "@/content/editorial";
 import { keywordPages, pagePath } from "@/content/pages";
 import { htmlLang, localizePath, locales } from "@/lib/i18n/config";
 import { absoluteUrl } from "@/lib/seo";
@@ -23,7 +24,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: absoluteUrl(localizePath(l, p.path)),
       changeFrequency: p.freq,
       priority: p.priority,
-      ...(p.modified ? { lastModified: new Date(p.modified) } : {}),
+      // lastmod helps Google schedule crawls; pages use the content review date.
+      lastModified: new Date(p.modified ?? editorial.updated),
       alternates: { languages },
     }));
   });
