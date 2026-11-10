@@ -14,6 +14,27 @@ const nextConfig: NextConfig = {
   output: process.env.NEXT_OUTPUT === "standalone" ? "standalone" : undefined,
   async redirects() {
     return [
+      // www → main domain, permanently (308), keeping the path and query string.
+      // The main domain is kisandrone.co.in (see lib/site.ts and Vercel → Domains).
+      {
+        source: "/",
+        has: [{ type: "host", value: "www.kisandrone.co.in" }],
+        destination: "https://kisandrone.co.in/",
+        permanent: true,
+      },
+      {
+        source: "/:path+/",
+        has: [{ type: "host", value: "www.kisandrone.co.in" }],
+        destination: "https://kisandrone.co.in/:path+/",
+        permanent: true,
+      },
+      {
+        // Files without a trailing slash: sitemap.xml, robots.txt, verification .html, images
+        source: "/:file(.+\\.[a-zA-Z0-9]+)",
+        has: [{ type: "host", value: "www.kisandrone.co.in" }],
+        destination: "https://kisandrone.co.in/:file",
+        permanent: true,
+      },
       // Old nested URLs → flat URLs (every page URL is just its name)
       {
         source: "/:category(kisan-drone|products-services|buying-guide|schemes-training|crops)/:slug/",
