@@ -20,6 +20,10 @@ const MAX_PER_TEXT = 2;
 
 /** Phrase (case-insensitive, whole words) → internal page. Order = priority. */
 const INTERNAL: [string, string][] = [
+  ["drone spraying price per acre", "/drone-spraying-price-per-acre/"],
+  ["price per acre", "/drone-spraying-price-per-acre/"],
+  ["cost per acre", "/drone-spraying-price-per-acre/"],
+  ["Rajasthan", "/drone-spraying-services-in-rajasthan/"],
   ["drone spraying service", "/drone-spraying-service/"],
   ["group bookings", "/drone-spraying-service/"],
   ["group booking", "/drone-spraying-service/"],

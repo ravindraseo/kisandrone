@@ -4,6 +4,9 @@
  */
 export const links: { internal: [string, string][]; external: [string, string][] } = {
   internal: [
+    ["प्रति एकड़ खर्च", "/drone-spraying-price-per-acre/"],
+    ["प्रति एकड़ दर", "/drone-spraying-price-per-acre/"],
+    ["राजस्थान", "/drone-spraying-services-in-rajasthan/"],
     ["ड्रोन छिड़काव सेवा", "/drone-spraying-service/"],
     ["समूह बुकिंग", "/drone-spraying-service/"],
     ["कृषि ड्रोन किराया", "/agriculture-drone-rental/"],

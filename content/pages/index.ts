@@ -4,8 +4,9 @@ import { cropPages } from "./crops";
 import { mainPages } from "./main";
 import { productPages } from "./products";
 import { schemePages } from "./schemes";
+import { sprayingCostPages } from "./spraying-cost";
 
-export const keywordPages: KeywordPage[] = [...mainPages, ...productPages, ...buyingPages, ...schemePages, ...cropPages];
+export const keywordPages: KeywordPage[] = [...mainPages, ...productPages, ...sprayingCostPages, ...buyingPages, ...schemePages, ...cropPages];
 
 /** Flat URL: every keyword page lives at /<slug>/ (no category prefix). */
 export function pagePath(p: Pick<KeywordPage, "slug">) {

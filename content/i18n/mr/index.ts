@@ -22,6 +22,7 @@ import { schemesA } from "./schemes-a";
 import { schemesB } from "./schemes-b";
 import { schemesC } from "./schemes-c";
 import { schemesD } from "./schemes-d";
+import { sprayingCost } from "./spraying-cost";
 import { about, blog, contact } from "./utility";
 
 /** मराठी translations. */
@@ -43,6 +44,7 @@ export const pack: ContentPack = {
     ...cropsA,
     ...cropsB,
     ...cropsC,
+    ...sprayingCost,
   },
   categories: { ...categoriesA, ...categoriesB },
   articles: { ...blogA, ...blogB },
